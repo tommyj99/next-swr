@@ -1,11 +1,14 @@
 import useSWR from "swr";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
+// This file contains info on static generation without data, and then fetching on the client side.
+/*-----------------------------------------------------------------------------------------------*/
+
 // This is an SWR hook that can be used in any component when imported
 /*------------------------------------------------------------------*/
 
 export default function useNews(params) {
-  // I can pass in params using params
+  // I can pass in url query params
   const { data, error } = useSWR(
     `http://localhost:3000/api/news?mainchoice=${params}&secondarychoice=null&date=2022-03-24`,
     fetcher
@@ -24,13 +27,13 @@ export default function useNews(params) {
 // const ExampleComponent = () => {
 //   const { news, isLoading, isError } = useNews();
 
-//   if (isLoading) return <h1>Loading...</h1>;
+//   if (isLoading) return <h1>Loading...</h1>; // use a skeleton here to show loading.
 //   if (isError) return <h1>Something went wrong!</h1>;
 
 //   return <h2>{news}</h2>
 // };
 
-//This is the call inside api/news currently
+//This is the call inside the api folder, api/news, currently
 /*----------------------------------------*/
 
 // export default async (req, res) => {

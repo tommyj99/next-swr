@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import useSWR from "swr";
 import NewsPage from "./newspage";
 import useNews from "../utils/utils";
+import { Skeleton } from "@mui/material";
 // const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Home() {
@@ -12,7 +13,23 @@ export default function Home() {
 
   const { news, isLoading, isError } = useNews("top-headlines");
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading)
+    return (
+      <>
+        <Skeleton variant="text" />
+        <Skeleton variant="text" />
+        <Skeleton variant="text" />
+        <Skeleton variant="text" />
+        <Skeleton variant="text" />
+        <Skeleton variant="text" />
+        <Skeleton variant="text" />
+        <Skeleton variant="text" />
+        <Skeleton variant="text" />
+        <Skeleton variant="text" />
+        <Skeleton variant="text" />
+        <Skeleton variant="text" />
+      </>
+    );
   if (isError) return <h1>Something went wrong!</h1>;
 
   console.log("articles: ", news.data.articles);
