@@ -1,6 +1,5 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import useSWR from "swr";
 import NewsPage from "./newspage";
 import useNews from "../utils/utils";
 import { Skeleton } from "@mui/material";
@@ -15,24 +14,15 @@ export default function Home() {
 
   if (isLoading)
     return (
-      <>
-        <Skeleton variant="text" />
-        <Skeleton variant="text" />
-        <Skeleton variant="text" />
-        <Skeleton variant="text" />
-        <Skeleton variant="text" />
-        <Skeleton variant="text" />
-        <Skeleton variant="text" />
-        <Skeleton variant="text" />
-        <Skeleton variant="text" />
-        <Skeleton variant="text" />
-        <Skeleton variant="text" />
-        <Skeleton variant="text" />
-      </>
+      <div className={styles.container}>
+        <main className="App">
+          <h1>NewzWorthy</h1>
+          <Skeleton variant="text" />
+        </main>
+      </div>
     );
   if (isError) return <h1>Something went wrong!</h1>;
 
-  console.log("articles: ", news.data.articles);
   return (
     <div className={styles.container}>
       <Head>
@@ -47,6 +37,7 @@ export default function Home() {
             <NewsPage
               key={index}
               title={item.title}
+              image={item.urlToImage}
               article={item.description}
             ></NewsPage>
           ))}
