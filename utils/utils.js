@@ -8,9 +8,10 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 /*------------------------------------------------------------------*/
 
 export default function useNews(params) {
-  // I can pass in url query params
+  const { mainChoice, secondaryChoice, date } = params;
+  console.log("params: ", params);
   const { data, error } = useSWR(
-    `http://localhost:3000/api/news?mainchoice=${params}&secondarychoice=null&date=2022-03-24`,
+    `http://localhost:3000/api/news?mainchoice=${mainChoice}&secondarychoice=${secondaryChoice}&date=${date}`,
     fetcher
   );
 
