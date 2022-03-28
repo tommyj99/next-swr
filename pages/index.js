@@ -2,8 +2,9 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import useNews from "../utils/utils";
 import { Skeleton } from "@mui/material";
+import React from "react";
 
-export default function NewzHome() {
+const NewzHome = () => {
   function dateFormat() {
     const currentDate = new Date();
     let day = currentDate.getDate();
@@ -19,6 +20,7 @@ export default function NewzHome() {
     secondaryChoice: "sports",
     date: dateFormat(),
   };
+
   const { news, isLoading, isError } = useNews(params);
 
   if (isLoading)
@@ -53,4 +55,6 @@ export default function NewzHome() {
       </main>
     </div>
   );
-}
+};
+
+export default NewzHome;

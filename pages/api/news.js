@@ -7,7 +7,6 @@ export default async (req, res) => {
   let secondaryChoice = req.query.secondarychoice;
   let date = req.query.date;
   let url = "";
-  //let url = `https://newsapi.org/v2/${mainChoice}?language=en&from=2022-03-24&apiKey=${process.env.NEWS_KEY}`;
 
   if (mainChoice === "everything") {
     url = `https://newsapi.org/v2/${mainChoice}?q=${secondaryChoice}&sortBy=relevency&language=en&from=${date}&apiKey=${process.env.NEWS_KEY}`; // process.env.REACT_APP_NEWS_API_KEY2
