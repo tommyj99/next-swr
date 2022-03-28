@@ -47,7 +47,6 @@ export const getStaticPaths = async () => {
     params: { id: article.id.toString() },
   }));
 
-  console.log("paths: ", paths);
   return {
     paths,
     fallback: false,
